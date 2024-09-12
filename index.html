@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hi</title>
+    <style>
+        @keyframes moveUpFade {
+          0% {
+            transform: translateY(20px); /* Start 20px below the original position */
+            opacity: 0; /* Start as invisible */
+          }
+          50% {
+            opacity: 1; /* Fully visible */
+          }
+          100% {
+            transform: translateY(-20px); /* Move 20px above the original position */
+            opacity: 0; /* Fade out */
+          }
+        }
+        .animate {
+          animation: moveUpFade 1s ease-in-out;
+        }
+        body { display: flex; flex-direction: column; align-items: center; height: 90vh; font-family: Arial, sans-serif; justify-content: center; background-color: black }
+        input, button {
+          background-color: darkGray;
+          border-radius: 5px;
+          border: none;
+          padding: 10px;
+        }
+        input:focus {
+          outline: none;
+        }
+        label, div {
+          color: white;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        label {
+          justify-content: flex-start;
+        }
+        #statusHistoryContainer {
+          display: flex;
+          flex-direction: column;
+          width: 90%;
+          max-width: 1000px;
+          height: 50%;
+          
+        }
+        #gameStatus {
+          display: flex;
+          justify-content: center;
+          align-items: center;          
+          font-size: 120pt;
+          text-align: center;
+          background-color: gray;
+          padding: 20px;
+          border-radius: 0px 0px 20px 20px;
+          min-width: 100%;
+          height: 90%;
+          box-sizing: border-box;
+        }
+        #betHistory {
+          display: flex;
+          background-color: #505050;
+          height: 10%;
+          min-width: 100%;
+          max-width: 100%;
+          border-radius: 10px 10px 0 0;
+          justify-content: flex-end;
+          padding: 5px;
+          flex-direction: row-reverse;
+          overflow: hidden;
+          overflow-x: auto;
+          box-sizing: border-box;
+        }
+        .pastMultipliers {
+          background-color: gray;
+          border-radius: 5px;
+          height: 90%;
+          width: auto;
+          margin: 5px;
+          padding: 0px 5px;
+          flex: 0 0 auto;
+        }
+        #inputAndBalanceContainer {
+          display: flex;
+          flex-direction: column;
+          width: 400px;
+        }
+        input {
+          color: black;
+          width: 80%;
+        }
+        button {
+          width: 100%;
+          min-height: 80px;
+          font-size: 20pt;
+          margin: 10px;
+        }
+        #balanceDiv {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          width: 100%;
+          max-width: 100%;
+        }
+        #balance {
+          font-size: 50px;
+          margin: 10px;
+        }
+        #betAmountInputDiv {
+          width: 100%;
+          box-sizing: border-box;
+          margin: 10px;
+          justify-content: space-between;
+        }
+        #addBalance {
+          color: #00cf00;
+          font-size: 20pt;
+        }
+        @media (max-width: 760px) {
+          #inputAndBalanceContainer {
+            width: 250px;
+          }
+        }
+    </style>
+</head>
+<body>
+    <h1></h1>
+    <div id="statusHistoryContainer">
+    	<div id="betHistory"></div>
+    	<div id="gameStatus">0.00x</div>
+    </div>
+
+   
+    <div id="inputAndBalanceContainer">
+      <div id="balanceDiv">
+        <label for="balance">Balance: </label>
+        <div id="balance">500.00</div>
+        <label id="addBalance"></label>
+      </div>
+      
+      <div id="betAmountInputDiv">
+          <label for="bet">Bet: </label>
+          <input type="number" id="bet" step="0.01" min="0">
+      </div>
+      <button id="cashoutButton" style="color: gray">CASH OUT</button>
+      <button id="startGame">BET</button>
+    </div>
+  
+    <div></div>
+    <script src="scripts/suikaviator.js"></script>
+</body>
+</html>
